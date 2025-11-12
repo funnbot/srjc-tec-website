@@ -8,7 +8,6 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>Home | TEC</title>
 </svelte:head>
 
 {@render children?.()}

@@ -5,6 +5,10 @@
 	import ProjectShowcase from '$lib/ProjectShowcase.svelte';
 </script>
 
+<svelte:head>
+	<title>Home | TEC</title>
+</svelte:head>
+
 <Header></Header>
 
 <!-- Main content for the title page -->
