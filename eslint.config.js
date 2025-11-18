@@ -68,6 +68,8 @@ export default defineConfig(
 		rules: {
 			// enable all recommended rules to report a warning
 			...eslintPluginBetterTailwindcss.configs['recommended-warn'].rules,
+			// broken https://github.com/schoero/eslint-plugin-better-tailwindcss/issues/237
+			'better-tailwindcss/enforce-consistent-line-wrapping': 'off'
 		},
 		settings: {
 			'better-tailwindcss': {
