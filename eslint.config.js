@@ -1,7 +1,5 @@
 import { includeIgnoreFile } from '@eslint/compat';
-import js from '@eslint/js';
 import prettier from 'eslint-config-prettier';
-import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss';
 import svelte from 'eslint-plugin-svelte';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
@@ -12,9 +10,11 @@ import svelteConfig from './svelte.config.js';
 
 const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 
+const serializableSvelteConfig = JSON.parse(JSON.stringify(svelteConfig));
+
 export default defineConfig(
 	includeIgnoreFile(gitignorePath),
-	js.configs.recommended,
+	//js.configs.recommended,
 	ts.configs.recommendedTypeChecked,
 	ts.configs.stylisticTypeChecked,
 	svelte.configs.recommended,
@@ -56,23 +56,25 @@ export default defineConfig(
 				projectService: true,
 				extraFileExtensions: ['.svelte'],
 				parser: ts.parser,
-				svelteConfig,
+				svelteConfig: serializableSvelteConfig,
 			},
 		},
 	},
-	{
-		name: 'better-tailwindcss',
-		plugins: {
-			'better-tailwindcss': eslintPluginBetterTailwindcss,
-		},
-		rules: {
-			// enable all recommended rules to report a warning
-			...eslintPluginBetterTailwindcss.configs['recommended-warn'].rules,
-		},
-		settings: {
-			'better-tailwindcss': {
-				entryPoint: 'src/app.css',
-			},
-		},
-	},
+	// {
+	// 	name: 'better-tailwindcss',
+	// 	plugins: {
+	// 		'better-tailwindcss': eslintPluginBetterTailwindcss,
+	// 	},
+	// 	rules: {
+	// 		// enable all recommended rules to report a warning
+	// 		...eslintPluginBetterTailwindcss.configs['recommended-warn'].rules,
+	// 		// broken https://github.com/schoero/eslint-plugin-better-tailwindcss/issues/237
+	// 		'better-tailwindcss/enforce-consistent-line-wrapping': 'off'
+	// 	},
+	// 	settings: {
+	// 		'better-tailwindcss': {
+	// 			entryPoint: 'src/app.css',
+	// 		},
+	// 	},
+	// },
 );

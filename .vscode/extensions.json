@@ -2,7 +2,6 @@
 	"recommendations": [
 		"editorconfig.editorconfig",
 		"streetsidesoftware.code-spell-checker",
-		"denoland.vscode-deno",
 		"dbaeumer.vscode-eslint",
 		"esbenp.prettier-vscode",
 		"svelte.svelte-vscode",
