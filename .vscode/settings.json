@@ -53,6 +53,10 @@
 		"svelte": "html"
 	},
 
+	"editor.wordWrap": "wordWrapColumn",
+	"editor.wordWrapColumn": 80,
+	//"editor.wrappingIndent": "",
+
 	"svelte.enable-ts-plugin": true,
 	"svelte.plugin.svelte.defaultScriptLanguage": "ts",
 	"svelte.plugin.css.completions.emmet": false,

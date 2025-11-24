@@ -20,6 +20,7 @@
     "npm:eslint-plugin-svelte@^3.13.0": "3.13.0_eslint@9.39.1__jiti@2.6.1_svelte@5.43.8__acorn@8.15.0_postcss@8.5.6",
     "npm:eslint@^9.39.1": "9.39.1_jiti@2.6.1",
     "npm:globals@^16.5.0": "16.5.0",
+    "npm:mode-watcher@^1.1.0": "1.1.0_svelte@5.43.8__acorn@8.15.0",
     "npm:prettier-plugin-organize-imports@^4.3.0": "4.3.0_prettier@3.6.2_typescript@5.9.3",
     "npm:prettier-plugin-svelte@^3.4.0": "3.4.0_prettier@3.6.2_svelte@5.43.8__acorn@8.15.0",
     "npm:prettier-plugin-tailwindcss@~0.6.14": "0.6.14_prettier@3.6.2_prettier-plugin-organize-imports@4.3.0__prettier@3.6.2__typescript@5.9.3_prettier-plugin-svelte@3.4.0__prettier@3.6.2__svelte@5.43.8___acorn@8.15.0_typescript@5.9.3_svelte@5.43.8__acorn@8.15.0",
@@ -926,9 +927,9 @@
         "@floating-ui/dom",
         "@internationalized/date",
         "esm-env",
-        "runed",
+        "runed@0.35.1_@sveltejs+kit@2.48.5__@sveltejs+vite-plugin-svelte@6.2.1___svelte@5.43.8____acorn@8.15.0___vite@7.2.2____@types+node@22.19.1____picomatch@4.0.3___@types+node@22.19.1__svelte@5.43.8___acorn@8.15.0__vite@7.2.2___@types+node@22.19.1___picomatch@4.0.3__acorn@8.15.0__@types+node@22.19.1_svelte@5.43.8__acorn@8.15.0_@sveltejs+vite-plugin-svelte@6.2.1__svelte@5.43.8___acorn@8.15.0__vite@7.2.2___@types+node@22.19.1___picomatch@4.0.3__@types+node@22.19.1_vite@7.2.2__@types+node@22.19.1__picomatch@4.0.3_@types+node@22.19.1",
         "svelte",
-        "svelte-toolbelt",
+        "svelte-toolbelt@0.10.6_svelte@5.43.8__acorn@8.15.0_@sveltejs+kit@2.48.5__@sveltejs+vite-plugin-svelte@6.2.1___svelte@5.43.8____acorn@8.15.0___vite@7.2.2____@types+node@22.19.1____picomatch@4.0.3___@types+node@22.19.1__svelte@5.43.8___acorn@8.15.0__vite@7.2.2___@types+node@22.19.1___picomatch@4.0.3__acorn@8.15.0__@types+node@22.19.1_@sveltejs+vite-plugin-svelte@6.2.1__svelte@5.43.8___acorn@8.15.0__vite@7.2.2___@types+node@22.19.1___picomatch@4.0.3__@types+node@22.19.1_vite@7.2.2__@types+node@22.19.1__picomatch@4.0.3_@types+node@22.19.1",
         "tabbable"
       ]
     },
@@ -2266,6 +2267,14 @@
     "minipass@7.1.2": {
       "integrity": "sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw=="
     },
+    "mode-watcher@1.1.0_svelte@5.43.8__acorn@8.15.0": {
+      "integrity": "sha512-mUT9RRGPDYenk59qJauN1rhsIMKBmWA3xMF+uRwE8MW/tjhaDSCCARqkSuDTq8vr4/2KcAxIGVjACxTjdk5C3g==",
+      "dependencies": [
+        "runed@0.25.0_svelte@5.43.8__acorn@8.15.0",
+        "svelte",
+        "svelte-toolbelt@0.7.1_svelte@5.43.8__acorn@8.15.0"
+      ]
+    },
     "mri@1.2.0": {
       "integrity": "sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA=="
     },
@@ -2626,6 +2635,20 @@
         "queue-microtask"
       ]
     },
+    "runed@0.23.4_svelte@5.43.8__acorn@8.15.0": {
+      "integrity": "sha512-9q8oUiBYeXIDLWNK5DfCWlkL0EW3oGbk845VdKlPeia28l751VpfesaB/+7pI6rnbx1I6rqoZ2fZxptOJLxILA==",
+      "dependencies": [
+        "esm-env",
+        "svelte"
+      ]
+    },
+    "runed@0.25.0_svelte@5.43.8__acorn@8.15.0": {
+      "integrity": "sha512-7+ma4AG9FT2sWQEA0Egf6mb7PBT2vHyuHail1ie8ropfSjvZGtEAx8YTmUjv/APCsdRRxEVvArNjALk9zFSOrg==",
+      "dependencies": [
+        "esm-env",
+        "svelte"
+      ]
+    },
     "runed@0.35.1_@sveltejs+kit@2.48.5__@sveltejs+vite-plugin-svelte@6.2.1___svelte@5.43.8____acorn@8.15.0___vite@7.2.2____@types+node@22.19.1____picomatch@4.0.3___@types+node@22.19.1__svelte@5.43.8___acorn@8.15.0__vite@7.2.2___@types+node@22.19.1___picomatch@4.0.3__acorn@8.15.0__@types+node@22.19.1_svelte@5.43.8__acorn@8.15.0_@sveltejs+vite-plugin-svelte@6.2.1__svelte@5.43.8___acorn@8.15.0__vite@7.2.2___@types+node@22.19.1___picomatch@4.0.3__@types+node@22.19.1_vite@7.2.2__@types+node@22.19.1__picomatch@4.0.3_@types+node@22.19.1": {
       "integrity": "sha512-2F4Q/FZzbeJTFdIS/PuOoPRSm92sA2LhzTnv6FXhCoENb3huf5+fDuNOg1LNvGOouy3u/225qxmuJvcV3IZK5Q==",
       "dependencies": [
@@ -2803,7 +2826,16 @@
       "integrity": "sha512-YWuX+RE+CnWYx09yseAe4ZVMM7e7GRFZM6OYWpBKOb++s+SQ8RBIMMe+Bs/CznBMc0QPLjr+vDBxTAkozXsFXQ==",
       "dependencies": [
         "clsx",
-        "runed",
+        "runed@0.35.1_@sveltejs+kit@2.48.5__@sveltejs+vite-plugin-svelte@6.2.1___svelte@5.43.8____acorn@8.15.0___vite@7.2.2____@types+node@22.19.1____picomatch@4.0.3___@types+node@22.19.1__svelte@5.43.8___acorn@8.15.0__vite@7.2.2___@types+node@22.19.1___picomatch@4.0.3__acorn@8.15.0__@types+node@22.19.1_svelte@5.43.8__acorn@8.15.0_@sveltejs+vite-plugin-svelte@6.2.1__svelte@5.43.8___acorn@8.15.0__vite@7.2.2___@types+node@22.19.1___picomatch@4.0.3__@types+node@22.19.1_vite@7.2.2__@types+node@22.19.1__picomatch@4.0.3_@types+node@22.19.1",
+        "style-to-object",
+        "svelte"
+      ]
+    },
+    "svelte-toolbelt@0.7.1_svelte@5.43.8__acorn@8.15.0": {
+      "integrity": "sha512-HcBOcR17Vx9bjaOceUvxkY3nGmbBmCBBbuWLLEWO6jtmWH8f/QoWmbyUfQZrpDINH39en1b8mptfPQT9VKQ1xQ==",
+      "dependencies": [
+        "clsx",
+        "runed@0.23.4_svelte@5.43.8__acorn@8.15.0",
         "style-to-object",
         "svelte"
       ]
@@ -3134,6 +3166,7 @@
         "npm:eslint-plugin-svelte@^3.13.0",
         "npm:eslint@^9.39.1",
         "npm:globals@^16.5.0",
+        "npm:mode-watcher@^1.1.0",
         "npm:prettier-plugin-organize-imports@^4.3.0",
         "npm:prettier-plugin-svelte@^3.4.0",
         "npm:prettier-plugin-tailwindcss@~0.6.14",
