@@ -1,7 +1,7 @@
 <!-- eslint-disable svelte/no-navigation-without-resolve  -->
 <script lang="ts">
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { cn, placehold } from '$lib/utils';
+	import { cn, placeholderImage } from '$lib/utils';
 	import Menu from '@lucide/svelte/icons/menu';
 	import X from '@lucide/svelte/icons/x';
 	import { scrollY } from 'svelte/reactivity/window';
@@ -36,7 +36,7 @@
 							href={resolve('/')}
 							aria-label="home"
 							class="flex items-center space-x-2">
-							<img alt="logo" src={placehold('Logo', [40, 40])} />
+							<img alt="logo" src={placeholderImage('Logo', [40, 40])} />
 						</a>
 
 						<!-- Mobile Navigation -->

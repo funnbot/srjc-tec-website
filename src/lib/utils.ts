@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 
-export function placehold(
+export function placeholderImage(
 	label: string,
 	size: [number, number] = [600, 400],
 	dark = false,

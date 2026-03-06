@@ -38,6 +38,7 @@ export default defineConfig(
 		files: ['src/**/*.ts', 'src/**/*.js'],
 		languageOptions: {
 			parserOptions: {
+				tsconfigRootDir: import.meta.dirname,
 				projectService: true,
 			},
 		},
@@ -53,6 +54,7 @@ export default defineConfig(
 		languageOptions: {
 			parser: svelteParser,
 			parserOptions: {
+				tsconfigRootDir: import.meta.dirname,
 				projectService: true,
 				extraFileExtensions: ['.svelte'],
 				parser: ts.parser,
