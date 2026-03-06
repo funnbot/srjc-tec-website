@@ -30,7 +30,7 @@
     "npm:svelte-eslint-parser@^1.4.0": "1.4.0_svelte@5.43.8__acorn@8.15.0_postcss@8.5.6",
     "npm:svelte@^5.43.8": "5.43.8_acorn@8.15.0",
     "npm:tailwind-merge@^3.4.0": "3.4.0",
-    "npm:tailwind-variants@^3.1.1": "3.1.1_tailwind-merge@3.4.0_tailwindcss@4.1.17",
+    "npm:tailwind-variants@^3.2.2": "3.2.2_tailwind-merge@3.4.0_tailwindcss@4.1.17",
     "npm:tailwindcss@^4.1.17": "4.1.17",
     "npm:tw-animate-css@^1.4.0": "1.4.0",
     "npm:typescript-eslint@^8.47.0": "8.47.0_eslint@9.39.1__jiti@2.6.1_typescript@5.9.3_@typescript-eslint+parser@8.47.0__eslint@9.39.1___jiti@2.6.1__typescript@5.9.3",
@@ -1508,6 +1508,7 @@
         "package-json-from-dist",
         "path-scurry"
       ],
+      "deprecated": true,
       "bin": true
     },
     "globals@14.0.0": {
@@ -2900,8 +2901,8 @@
     "tailwind-merge@3.4.0": {
       "integrity": "sha512-uSaO4gnW+b3Y2aWoWfFpX62vn2sR3skfhbjsEnaBI81WD1wBLlHZe5sWf0AqjksNdYTbGBEd0UasQMT3SNV15g=="
     },
-    "tailwind-variants@3.1.1_tailwind-merge@3.4.0_tailwindcss@4.1.17": {
-      "integrity": "sha512-ftLXe3krnqkMHsuBTEmaVUXYovXtPyTK7ckEfDRXS8PBZx0bAUas+A0jYxuKA5b8qg++wvQ3d2MQ7l/xeZxbZQ==",
+    "tailwind-variants@3.2.2_tailwind-merge@3.4.0_tailwindcss@4.1.17": {
+      "integrity": "sha512-Mi4kHeMTLvKlM98XPnK+7HoBPmf4gygdFmqQPaDivc3DpYS6aIY6KiG/PgThrGvii5YZJqRsPz0aPyhoFzmZgg==",
       "dependencies": [
         "tailwind-merge",
         "tailwindcss"
@@ -3175,7 +3176,7 @@
         "npm:svelte-eslint-parser@^1.4.0",
         "npm:svelte@^5.43.8",
         "npm:tailwind-merge@^3.4.0",
-        "npm:tailwind-variants@^3.1.1",
+        "npm:tailwind-variants@^3.2.2",
         "npm:tailwindcss@^4.1.17",
         "npm:tw-animate-css@^1.4.0",
         "npm:typescript-eslint@^8.47.0",
