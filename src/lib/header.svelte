@@ -19,7 +19,7 @@
 	});
 </script>
 
-<header class="fixed z-20 w-full px-2">
+<header class="fixed top-0 z-20 w-full px-2">
 	<NavigationMenu.Root>
 		{#snippet child()}
 			<div
