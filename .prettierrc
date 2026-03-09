@@ -21,6 +21,7 @@
 	"bracketSameLine": true,
 
 	"svelteStrictMode": true,
+	"svelteBracketNewLine": false,
 
 	"tailwindStylesheet": "./src/app.css"
 }
