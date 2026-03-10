@@ -3,7 +3,7 @@
 	import Footer from '$lib/Footer.svelte';
 	import Header from '$lib/header.svelte';
 	import HeroSection from '$lib/hero.svelte';
-	import ProjectShowcase from '$lib/ProjectShowcase.svelte';
+	import ProjectShowcase from '$lib/project-showcase.svelte';
 </script>
 
 <svelte:head>
