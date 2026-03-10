@@ -50,7 +50,7 @@
 		<div class="mx-auto flex max-w-6xl flex-col border-2 p-4">
 			<h2 class="font-display text-3xl">Why Join Us?</h2>
 			<div class="flex flex-wrap text-balance">
-				<p class="max-w-xl mt-5">
+				<p class="mt-5 max-w-xl">
 					The SRJC engineering club is one of the oldest clubs at the college.
 					Composed of a variety of engineering fields including but not limited
 					to Aerospace, Biomedical, Civil, Computer, Electrical, Environmental,
@@ -64,7 +64,16 @@
 					</div>
 					<div class="rounded-lg border border-accent p-4">
 						<p class="mb-2 font-bold">Contact</p>
-						<p class="text-sm text-accent-foreground">Email: tec@srjc.edu</p>
+						<p class="text-sm text-accent-foreground">
+							Discord:
+							<a href="https://discord.gg/HEg6D8Dwsv"
+								>https://discord.gg/HEg6D8Dwsv</a> <br />
+							Instagram:
+							<a href="https://www.instagram.com/tecsrjc/">@tecsrjc</a> <br />
+							Canvas:
+							<a href="https://canvas.santarosa.edu/enroll/N9EAKA"
+								>https://canvas.santarosa.edu/enroll/N9EAKA</a>
+						</p>
 					</div>
 					<div class="rounded-lg border border-accent p-4">
 						<p class="mb-2 font-bold">Get Involved</p>
