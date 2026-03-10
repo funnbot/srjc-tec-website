@@ -12,10 +12,10 @@
 	import { resolve } from '$app/paths';
 	import { placeholderImage } from './utils';
 
-	const bgUrl = placeholderImage('Background', [2700, 1440], true);
+	const bgUrl = placeholderImage(" ", [2700, 1440], true);
 </script>
 
-<div class="absolute inset-0 -z-1">
+<div class="absolute inset-0">
 	<div
 		class="absolute inset-0 bg-center bg-no-repeat"
 		style="background-image: url('{bgUrl}');">
@@ -24,7 +24,7 @@
 		class="absolute inset-0 bg-radial from-transparent from-0% to-background">
 	</div>
 	<div
-		class="absolute inset-0 bg-linear-to-t from-background/50 from-0% to-background/50 to-100%">
+		class="absolute inset-0 bg-linear-to-t from-background/90 from-0% to-background/90 to-100%">
 	</div>
 </div>
 

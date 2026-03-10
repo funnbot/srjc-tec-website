@@ -13,7 +13,7 @@
 
 <!-- Main content for the title page -->
 <HeroSection></HeroSection>
-<!-- <Separator /> -->
+<Separator />
 <ProjectShowcase></ProjectShowcase>
 
 <Footer></Footer>

@@ -5,8 +5,7 @@
 </script>
 
 <section
-	class="
-   flex flex-col items-center justify-start gap-10 bg-slate-200 px-8 py-8
+	class="flex flex-col items-center justify-start gap-10 overflow-hidden bg-slate-200 px-8 py-8
    sm:px-16 sm:py-16
    lg:px-24 lg:py-24
  ">
