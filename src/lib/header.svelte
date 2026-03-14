@@ -9,6 +9,7 @@
 	import type { Pathname } from '$app/types';
 	import NavBar from './nav-bar.svelte';
 	import * as NavigationMenu from './components/ui/navigation-menu/index.js';
+	import Logo from './assets/svg/TECLogoSVG.svg?component';
 
 	let menuState = $state(false);
 	let isScrolled = $derived.by(() => {
@@ -35,8 +36,8 @@
 						<a
 							href={resolve('/')}
 							aria-label="home"
-							class="flex items-center space-x-2">
-							<img alt="logo" src={placeholderImage('Logo', [40, 40])} />
+							class="flex h-10 w-10 items-center space-x-2">
+							<Logo class="fill-foreground stroke-foreground" />
 						</a>
 
 						<!-- Mobile Navigation -->
@@ -68,12 +69,12 @@
 						<div class="lg:hidden">
 							<NavBar column></NavBar>
 						</div>
-						<div
+						<!-- <div
 							class="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
 							<Button href="#" size="sm" class={cn(isScrolled && 'lg:hidden')}>
 								Join Us
 							</Button>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

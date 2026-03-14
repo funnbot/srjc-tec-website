@@ -3,7 +3,7 @@
 	// Shadcn Svelte UI Button Component
 	import Button from '$lib/components/ui/button/button.svelte';
 
-	// You can store Hero Header Component in seperate file
+	// You can store Hero Header Component in separate file
 	// I have used snippet for better readability
 
 	// Hero Header Component
@@ -15,8 +15,6 @@
 	import HeroBackground from './hero-background.svelte';
 	import BorderCorners from './border-corners.svelte';
 	import * as Item from '$lib/components/ui/item/index';
-
-	const bgUrl = placeholderImage('TEC', [2700, 1440], true);
 </script>
 
 <!--
@@ -29,7 +27,7 @@
  -->
 <section class="relative flex min-h-screen items-center overflow-hidden">
 	<HeroBackground />
-	<div class="relative mx-auto flex flex-col gap-10 py-20 pb-32">
+	<div class="relative mx-auto flex flex-col gap-10 py-30 pb-32">
 		<div
 			class="relative mx-auto max-w-3xl border-2 border-accent p-5 text-center">
 			<BorderCorners />
@@ -47,40 +45,44 @@
 				classroom.
 			</p>
 		</div>
-		<div class="mx-auto flex max-w-6xl flex-col border-2 p-4">
-			<h2 class="font-display text-3xl">Why Join Us?</h2>
-			<div class="flex flex-wrap text-balance">
-				<p class="mt-5 max-w-xl">
-					The SRJC engineering club is one of the oldest clubs at the college.
-					Composed of a variety of engineering fields including but not limited
-					to Aerospace, Biomedical, Civil, Computer, Electrical, Environmental,
-					Mechanical, Chemical, Software Engineering.
-				</p>
-				<div class="flex flex-col gap-3">
-					<div class="rounded-lg border border-accent p-4">
-						<p class="mb-2 font-bold">Meeting Times</p>
-						<p class="text-sm text-accent-foreground">Thursdays 1-2pm</p>
-						<p class="text-sm text-accent-foreground">131 Lindley Center</p>
-					</div>
-					<div class="rounded-lg border border-accent p-4">
-						<p class="mb-2 font-bold">Contact</p>
-						<p class="text-sm text-accent-foreground">
-							Discord:
-							<a href="https://discord.gg/HEg6D8Dwsv"
-								>https://discord.gg/HEg6D8Dwsv</a> <br />
-							Instagram:
-							<a href="https://www.instagram.com/tecsrjc/">@tecsrjc</a> <br />
-							Canvas:
-							<a href="https://canvas.santarosa.edu/enroll/N9EAKA"
-								>https://canvas.santarosa.edu/enroll/N9EAKA</a>
-						</p>
-					</div>
-					<div class="rounded-lg border border-accent p-4">
-						<p class="mb-2 font-bold">Get Involved</p>
-						<p class="text-sm text-accent-foreground">
-							Bring your own ideas and turn them into a project
-						</p>
-					</div>
+		<div class="mx-auto flex border-2 p-4">
+			<div class="flex max-w-6xl flex-col">
+				<h2 class="font-display text-3xl">Why Join Us?</h2>
+				<div class="flex flex-wrap text-balance">
+					<p class="mt-5 max-w-xl">
+						The SRJC engineering club is one of the oldest clubs at the college.
+						Composed of a variety of engineering fields including but not
+						limited to Aerospace, Biomedical, Civil, Computer, Electrical,
+						Environmental, Mechanical, Chemical, Software Engineering.
+					</p>
+				</div>
+			</div>
+			<div class="flex flex-col gap-3">
+				<div class="rounded-lg border border-accent p-4">
+					<p class="mb-2 font-bold">Meeting Times</p>
+					<p class="text-sm text-accent-foreground">Thursdays 1-2pm</p>
+					<p class="text-sm text-accent-foreground">131 Lindley Center</p>
+				</div>
+				<div class="rounded-lg border border-accent p-4">
+					<p class="mb-2 font-bold">Contact</p>
+					<p class="text-sm text-accent-foreground">
+						Discord:
+						<a class="underline" href="https://discord.gg/HEg6D8Dwsv"
+							>https://discord.gg/HEg6D8Dwsv</a> <br />
+						Instagram:
+						<a href="https://www.instagram.com/tecsrjc/">@tecsrjc</a> <br />
+						Canvas:
+						<a href="https://canvas.santarosa.edu/enroll/N9EAKA"
+							>https://canvas.santarosa.edu/enroll/N9EAKA</a> <br />
+						Email:
+						tec.srjc@gmail.com
+					</p>
+				</div>
+				<div class="rounded-lg border border-accent p-4">
+					<p class="mb-2 font-bold">Get Involved</p>
+					<p class="text-sm text-accent-foreground">
+						Bring your own ideas and turn them into a project
+					</p>
 				</div>
 			</div>
 		</div>

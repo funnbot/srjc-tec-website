@@ -3,12 +3,15 @@
 	import type { Pathname } from '$app/types';
 	import { cn } from './utils';
 
+	// const components: { title: string; href: Pathname }[] = [
+	// 	{ title: 'About', href: '/' },
+	// 	{ title: 'Events', href: '/' },
+	// 	{ title: 'Team', href: '/' },
+	// 	{ title: 'Sponsors', href: '/' },
+	// 	{ title: 'Projects', href: '/' },
+	// ];
 	const components: { title: string; href: Pathname }[] = [
-		{ title: 'About', href: '/' },
-		{ title: 'Events', href: '/' },
-		{ title: 'Team', href: '/' },
-		{ title: 'Sponsors', href: '/' },
-		{ title: 'Projects', href: '/' },
+		{ title: 'WIP', href: '/' },
 	];
 
 	let { column }: { column?: boolean } = $props();

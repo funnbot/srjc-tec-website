@@ -12,20 +12,20 @@
 	import { resolve } from '$app/paths';
 	import { placeholderImage } from './utils';
 
-	const bgUrl = placeholderImage(" ", [2700, 1440], true);
+	import bg from '$lib/assets/sonoma-water-trip.jpeg';
 </script>
 
 <div class="absolute inset-0">
 	<div
 		class="absolute inset-0 bg-center bg-no-repeat"
-		style="background-image: url('{bgUrl}');">
+		style="background-image: url('{bg}');">
 	</div>
 	<div
-		class="absolute inset-0 bg-radial from-transparent from-0% to-background">
+		class="absolute inset-0 bg-radial from-background/90 from-0% to-100% to-background/50">
 	</div>
-	<div
-		class="absolute inset-0 bg-linear-to-t from-background/90 from-0% to-background/90 to-100%">
-	</div>
+	<!-- <div
+		class="absolute inset-0 bg-linear-to-t from-background/50 from-0% to-background/40 to-100%">
+	</div> -->
 </div>
 
 <!-- <div

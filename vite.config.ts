@@ -7,7 +7,7 @@ export default defineConfig({
 	plugins: [
 		sveltekit(),
 		svg({
-			includePaths: ['./src/lib/icons/'],
+			includePaths: ['./src/lib/assets/svg/'],
 			svgoOptions: {
 				multipass: true,
 				plugins: ['preset-default']
