@@ -45,6 +45,9 @@ jobs:
       - name: Install Dependencies
         run: deno install --allow-scripts
 
+      - name: svelte-kit prepare
+        run: deno task prepare
+
       # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github#example-workflow-that-runs-the-eslint-analysis-tool
       - name: eslint (sarif output)
         # eslint exits 1 if it finds anything to report
