@@ -44,6 +44,8 @@ jobs:
         run: deno install --allow-scripts
 
       - name: Build with SvelteKit
+        env:
+          BASE_PATH: '/${{ github.event.repository.name }}'
         run: deno run build
 
       - name: Upload artifact
