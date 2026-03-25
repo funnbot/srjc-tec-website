@@ -55,7 +55,7 @@ export const TEST_PROJECTS: ProjectCardData[] = [
 		coverImage: placeholderImage('Project One'),
 		imageAlt: 'Project One Cover Image',
 		status: 'In Progress',
-		href: '/projects/project-one',
+		href: '/projects',
 	},
 	{
 		id: 'project-two',
@@ -64,7 +64,7 @@ export const TEST_PROJECTS: ProjectCardData[] = [
 		coverImage: placeholderImage('Project Two'),
 		imageAlt: 'Project Two Cover Image',
 		status: 'Completed',
-		href: '/projects/project-two',
+		href: '/projects',
 	},
 	{
 		id: 'project-three',
@@ -73,7 +73,7 @@ export const TEST_PROJECTS: ProjectCardData[] = [
 		coverImage: placeholderImage('Project Three'),
 		imageAlt: 'Project Three Cover Image',
 		status: 'Planned',
-		href: '/projects/project-three',
+		href: '/projects',
 	},
 	{
 		id: 'project-four',
@@ -82,6 +82,6 @@ export const TEST_PROJECTS: ProjectCardData[] = [
 		coverImage: placeholderImage('Project Four'),
 		imageAlt: 'Project Four Cover Image',
 		status: 'Not Started',
-		href: '/projects/project-four',
+		href: '/projects',
 	},
 ];
