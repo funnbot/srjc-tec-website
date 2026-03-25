@@ -22,6 +22,10 @@ export function placeholderImage(
 	return `https://placehold.co/${size[0]}x${size[1]}/${color}${text}`;
 }
 
+export function isNonEmptyString(value: unknown): value is string {
+	return typeof value === 'string' && value.trim().length > 0;
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type WithoutChild<T> = T extends { child?: any } ? Omit<T, 'child'> : T;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

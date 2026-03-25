@@ -2,7 +2,9 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import type { LayoutProps } from './$types';
-	import { ModeWatcher } from "mode-watcher";
+	import { ModeWatcher } from 'mode-watcher';
+	import Header from '$lib/header.svelte';
+	import Footer from '$lib/Footer.svelte';
 	let { children }: LayoutProps = $props();
 </script>
 
@@ -11,7 +13,9 @@
 </svelte:head>
 
 <ModeWatcher />
+<Header />
 {@render children?.()}
+<Footer />
 
 <style lang="postcss">
 	@reference "tailwindcss";

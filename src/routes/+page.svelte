@@ -9,11 +9,7 @@
 <svelte:head>
 	<title>Home | TEC</title>
 </svelte:head>
-<Header />
 
-<!-- Main content for the title page -->
 <HeroSection></HeroSection>
 <Separator />
 <ProjectShowcase></ProjectShowcase>
-
-<Footer></Footer>
