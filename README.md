@@ -1,3 +1,5 @@
+[![Deploy SvelteKit to GitHub Pages](https://github.com/funnbot/srjc-tec-website/actions/workflows/sveltekit-gh-pages.yml/badge.svg)](https://github.com/funnbot/srjc-tec-website/actions/workflows/sveltekit-gh-pages.yml)
+
 ## Contributing
 
 For an in-depth setup guide, see [setup](https://github.com/funnbot/srjc-tec-website/wiki/Development-Setup).
