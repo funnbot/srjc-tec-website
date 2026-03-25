@@ -36,7 +36,7 @@ jobs:
         uses: denoland/setup-deno@v2.0.3
         with:
           # The Deno version to install. Can be a semver version of a stable release, "canary" for the latest canary, "lts" for the latest LTS, or the Git hash of a specific canary release.
-          deno-version: 2.5.2
+          deno-version: 2.7.5
           # Cache downloaded modules & packages automatically in GitHub Actions cache.
           cache: true
 
@@ -44,6 +44,8 @@ jobs:
         run: deno install --allow-scripts
 
       - name: Build with SvelteKit
+        env:
+          BASE_PATH: '/${{ github.event.repository.name }}'
         run: deno run build
 
       - name: Upload artifact
