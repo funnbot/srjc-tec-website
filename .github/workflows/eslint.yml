@@ -56,8 +56,7 @@ jobs:
         run: |
           wget https://raw.githubusercontent.com/microsoft/sarif-js-sdk/refs/heads/main/packages/eslint-formatter-sarif/sarif.js -O node_modules/sarif.cjs
           deno install npm:utf8 npm:lodash npm:jschardet
-          deno task --eval "eslint . --format node_modules/sarif.cjs -o eslint-results.sarif"
-        continue-on-error: true
+          deno task --eval "eslint . --format node_modules/sarif.cjs -o eslint-results.sarif || true"
 
       - name: Upload analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v4
