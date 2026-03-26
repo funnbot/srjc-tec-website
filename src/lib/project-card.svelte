@@ -3,6 +3,7 @@
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import type { ProjectCardData } from '$lib/project';
 	import { isNonEmptyString } from './utils';
+	import { resolve } from '$app/paths';
 
 	interface Props {
 		project: ProjectCardData;
@@ -30,7 +31,7 @@
 
 	<Card.Footer class="mt-auto flex gap-3 pt-2">
 		<a
-			href={project.href}
+			href={resolve(project.href)}
 			target="_blank"
 			rel="noreferrer"
 			class="text-sm font-medium text-primary underline-offset-4 hover:underline">

@@ -1,3 +1,4 @@
+import type { Pathname } from '$app/types';
 import { placeholderImage } from './utils';
 
 export interface MemberData {
@@ -29,12 +30,10 @@ export interface ProjectData {
 	contributors: Contributor[];
 }
 
-export interface ProjectData
-{
+export interface ProjectData {
 	guid: string;
 	title: string;
 	shortDescription: string;
-
 }
 
 export interface ProjectCardData {
@@ -44,7 +43,7 @@ export interface ProjectCardData {
 	coverImage: string;
 	imageAlt: string;
 	status: string;
-	href: string;
+	href: Pathname;
 }
 
 export const TEST_PROJECTS: ProjectCardData[] = [
