@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import Button from './Button.svelte';
 	import { TEST_PROJECTS } from './project';
-	import ProjectCard from './project-card.svelte';
+	import ProjectCard from './components/project-card.svelte';
 </script>
 
 <section

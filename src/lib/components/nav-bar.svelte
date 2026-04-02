@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as NavigationMenu from '$lib/components/ui/navigation-menu/index.js';
 	import type { Pathname } from '$app/types';
-	import { cn } from './utils';
+	import { cn } from '$lib/utils';
 
 	const components: { title: string; href: Pathname }[] = [
 		{ title: 'About', href: '/' },

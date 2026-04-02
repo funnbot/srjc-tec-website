@@ -7,9 +7,9 @@
 	import { scrollY } from 'svelte/reactivity/window';
 	import { resolve } from '$app/paths';
 	import type { Pathname } from '$app/types';
-	import NavBar from './nav-bar.svelte';
-	import * as NavigationMenu from './components/ui/navigation-menu/index.js';
-	import Logo from './assets/svg/TECLogoSVG.svg?component';
+	import NavBar from '$lib/components/nav-bar.svelte';
+	import * as NavigationMenu from '$lib/components/ui/navigation-menu/index.js';
+	import Logo from '$lib/assets/svg/TECLogoSVG.svg?component';
 
 	let menuState = $state(false);
 	let isScrolled = $derived.by(() => {

@@ -13,7 +13,7 @@
 	import { resolve } from '$app/paths';
 	import { placeholderImage } from './utils';
 	import HeroBackground from './hero-background.svelte';
-	import BorderCorners from './border-corners.svelte';
+	import BorderCorners from '$lib/components/border-corners.svelte';
 	import * as Item from '$lib/components/ui/item/index';
 </script>
 
