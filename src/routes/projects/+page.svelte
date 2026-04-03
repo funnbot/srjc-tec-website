@@ -20,7 +20,7 @@
 	<Separator class="mb-6" />
 
 	<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-		{#each projects as project (project.id)}
+		{#each projects as project (project.slug)}
 			<ProjectCard {project} />
 		{/each}
 	</div>

@@ -31,7 +31,7 @@
 
 	<Card.Footer class="mt-auto flex gap-3 pt-2">
 		<a
-			href={resolve(project.href)}
+			href={resolve('/projects/[slug]', { slug: project.slug })}
 			target="_blank"
 			rel="noreferrer"
 			class="text-sm font-medium text-primary underline-offset-4 hover:underline">
