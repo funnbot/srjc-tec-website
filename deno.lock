@@ -35,6 +35,7 @@
     "npm:tw-animate-css@^1.4.0": "1.4.0",
     "npm:typescript-eslint@^8.57.1": "8.57.1_eslint@10.0.3__jiti@2.6.1_typescript@5.9.3",
     "npm:typescript@^5.9.3": "5.9.3",
+    "npm:valibot@^1.3.1": "1.3.1_typescript@5.9.3",
     "npm:vite@8": "8.0.0_@types+node@25.5.0"
   },
   "npm": {
@@ -949,7 +950,7 @@
         "eslint-visitor-keys@5.0.1"
       ]
     },
-    "@valibot/to-json-schema@1.5.0_valibot@1.2.0__typescript@5.9.3_typescript@5.9.3": {
+    "@valibot/to-json-schema@1.5.0_valibot@1.3.1__typescript@5.9.3_typescript@5.9.3": {
       "integrity": "sha512-GE7DmSr1C2UCWPiV0upRH6mv0cCPsqYGs819fb6srCS1tWhyXrkGGe+zxUiwzn/L1BOfADH4sNjY/YHCuP8phQ==",
       "dependencies": [
         "valibot"
@@ -3081,8 +3082,8 @@
       "integrity": "sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==",
       "bin": true
     },
-    "valibot@1.2.0_typescript@5.9.3": {
-      "integrity": "sha512-mm1rxUsmOxzrwnX5arGS+U4T25RdvpPjPN4yR0u9pUBov9+zGVtO84tif1eY4r6zWxVxu3KzIyknJy3rxfRZZg==",
+    "valibot@1.3.1_typescript@5.9.3": {
+      "integrity": "sha512-sfdRir/QFM0JaF22hqTroPc5xy4DimuGQVKFrzF1YfGwaS1nJot3Y8VqMdLO2Lg27fMzat2yD3pY5PbAYO39Gg==",
       "dependencies": [
         "typescript"
       ],
@@ -3248,6 +3249,7 @@
         "npm:tw-animate-css@^1.4.0",
         "npm:typescript-eslint@^8.57.1",
         "npm:typescript@^5.9.3",
+        "npm:valibot@^1.3.1",
         "npm:vite@8"
       ]
     }

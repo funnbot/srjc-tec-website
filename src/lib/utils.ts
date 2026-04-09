@@ -36,3 +36,10 @@ export type WithoutChildrenOrChild<T> = WithoutChildren<WithoutChild<T>>;
 export type WithElementRef<T, U extends HTMLElement = HTMLElement> = T & {
 	ref?: U | null;
 };
+
+const BrandTypeId: unique symbol = Symbol.for('brand');
+
+// Create a generic Brand interface using a unique identifier
+interface Brand<in out ID extends string | symbol> {
+	readonly [BrandTypeId]: Readonly<Record<ID, ID>>;
+}

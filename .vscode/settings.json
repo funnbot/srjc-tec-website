@@ -62,5 +62,9 @@
 	"svelte.enable-ts-plugin": true,
 	"svelte.plugin.svelte.defaultScriptLanguage": "ts",
 	"svelte.plugin.css.completions.emmet": false,
-	"svelte.plugin.html.completions.emmet": false
+	"svelte.plugin.html.completions.emmet": false,
+
+	"cSpell.words": [
+		"supabase"
+	]
 }

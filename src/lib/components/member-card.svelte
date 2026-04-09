@@ -4,75 +4,92 @@
 	import { cn } from '$lib/utils.js';
 	import Github from '@lucide/svelte/icons/github';
 	import Linkedin from '@lucide/svelte/icons/linkedin';
+	import type { ClubMember, ClubOfficer } from '$lib/team-member';
+	import { rollupVersion } from 'vite';
+	import { captureRejectionSymbol } from 'node:events';
 
-	interface Officer {
-		guid: string;
-		name: string;
-		headshot: string;
-		major: string;
-		linkedIn?: string;
-		github?: string;
-		yearStart: string;
-		yearEnd?: string;
-		isActive: boolean;
-		projects: {
-			projectGuid: string;
-			projectTitle: string;
-			role: string;
-		}[];
-		officialsRole: string;
-		biography: string;
-		roleStartYear?: string;
-		roleEndYear?: string;
-	}
+	// interface Officer {
+	// 	guid: string;
+	// 	name: string;
+	// 	headShot: string;
+	// 	major: string;
+	// 	linkedIn?: string;
+	// 	github?: string;
+	// 	yearStart: string;
+	// 	yearEnd?: string;
+	// 	isActive: boolean;
+	// 	projects: {
+	// 		projectGuid: string;
+	// 		projectTitle: string;
+	// 		role: string;
+	// 	}[];
+	// 	officialsRole: string;
+	// 	biography: string;
+	// 	roleStartYear?: string;
+	// 	roleEndYear?: string;
+	// }
 
-	interface Member {
-		guid: string;
-		name: string;
-		headshot: string;
-		major: string;
-		linkedIn?: string;
-		github?: string;
-		yearStart: string;
-		yearEnd?: string;
-		isActive: boolean;
-		projects: {
-			projectGuid: string;
-			projectTitle: string;
-			role: string;
-		}[];
-	}
+	// interface Member {
+	// 	guid: string;
+	// 	name: string;
+	// 	headShot: string;
+	// 	major: string;
+	// 	linkedIn?: string;
+	// 	github?: string;
+	// 	yearStart: string;
+	// 	yearEnd?: string;
+	// 	isActive: boolean;
+	// 	projects: {
+	// 		projectGuid: string;
+	// 		projectTitle: string;
+	// 		role: string;
+	// 	}[];
+	// }
 
 	interface MemberCardProps {
-		member: Member | Officer;
-		isOfficer?: boolean;
+		member: ClubMember | ClubOfficer;
 	}
 
-	let { member, isOfficer = false }: MemberCardProps = $props();
+	let { member }: MemberCardProps = $props();
 
 	let expanded = $state(false);
 
-	const isOfficerMember = (m: Member | Officer): m is Officer => {
-		return isOfficer && 'officialsRole' in m;
+	const isOfficerMember = (m: ClubMember | ClubOfficer): m is ClubOfficer => {
+		return 'officialsRole' in m;
 	};
 
 	const officer = $derived(isOfficerMember(member) ? member : null);
 
 	const yearsActive = $derived.by(() => {
-		if (member.yearEnd) {
-			return `'${member.yearStart}-'${member.yearEnd}`;
+		const years = member.yearsActive;
+		if (typeof years.end === 'number') {
+			return `'${years.start}-'${years.end}`;
 		}
-		return `'${member.yearStart}`;
+		return `'${years.start}`;
 	});
 
-	const statusBadge = $derived.by(() => {
-		if (isOfficer && officer) {
-			const role = officer.roleEndYear
-				? `Past ${officer.officialsRole}`
-				: officer.officialsRole;
-			return role;
+	const currentYear = new Date().getFullYear();
+
+	const statusBadges = $derived.by(() => {
+		let status: {
+			name: string;
+			style: 'currentOfficial' | 'pastOfficial' | '';
+		}[] = [];
+		if (officer !== null) {
+			// descend by start year
+			const roles = officer.officialsRoles.toSorted(
+				(a, b) => b.startYear - a.startYear,
+			);
+			for (const r of roles) {
+				if (r.startYear == currentYear) {
+					status.push({ name: r.role, style: 'currentOfficial' });
+				} else {
+					status.push({ name: r.role, style: 'pastOfficial' });
+				}
+			}
+			status.push(...roles.map((r) => r.role));
 		}
-		return member.isActive ? 'Active' : 'Alumni';
+		return status;
 	});
 </script>
 
@@ -103,7 +120,7 @@
 			<!-- Headshot -->
 			<div class="relative h-48 overflow-hidden bg-muted/20">
 				<img
-					src={member.headshot}
+					src={member.headShot}
 					alt={member.name}
 					loading="lazy"
 					class={cn(
