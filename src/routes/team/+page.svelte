@@ -52,10 +52,18 @@
 	const officers = $derived(data.officers ?? []);
 	const members = $derived(data.members ?? []);
 
-	const activeOfficers = $derived(officers.filter((o) => o.isActive || !o.roleEndYear));
-	const pastOfficers = $derived(officers.filter((o) => !o.isActive || o.roleEndYear));
+	const activeOfficers = $derived(
+		officers.filter((o) => o.isActive || !o.roleEndYear),
+	);
+	const pastOfficers = $derived(
+		officers.filter((o) => !o.isActive || o.roleEndYear),
+	);
 
-	const activeMembers = $derived(members.filter((m) => m.isActive).sort((a, b) => a.name.localeCompare(b.name)));
+	const activeMembers = $derived(
+		members
+			.filter((m) => m.isActive)
+			.sort((a, b) => a.name.localeCompare(b.name)),
+	);
 	const pastMembers = $derived(
 		members
 			.filter((m) => !m.isActive)
@@ -65,7 +73,7 @@
 					return (b.yearEnd ?? '').localeCompare(a.yearEnd ?? '');
 				}
 				return a.name.localeCompare(b.name);
-			})
+			}),
 	);
 
 	const allPastMembers = $derived([...pastOfficers, ...pastMembers]);
@@ -76,21 +84,20 @@
 	<title>Team | TEC</title>
 	<meta
 		name="description"
-		content="Meet the members and officers of The Engineering Club at Santa Rosa Junior College"
-	/>
+		content="Meet the members and officers of The Engineering Club" />
 </svelte:head>
 
-<section class="relative isolate overflow-hidden">
+<section class="relative isolate overflow-hidden py-20">
 	<div
-		class="absolute inset-x-0 top-0 -z-10 h-128 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_62%)]"
-	></div>
+		class="absolute inset-x-0 top-0 -z-10 h-128 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_62%)]">
+	</div>
 
 	<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
 		<!-- Header -->
 		<header class="mb-12 space-y-4">
 			<h1 class="font-display text-5xl font-semibold tracking-tight">Team</h1>
 			<p class="max-w-2xl text-lg text-muted-foreground">
-				Meet the officers and members of The Engineering Club at Santa Rosa Junior College
+				Meet the officers and members of The Engineering Club.
 			</p>
 		</header>
 
@@ -106,7 +113,7 @@
 
 				<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{#each activeOfficers as officer (officer.guid)}
-						<MemberCard member={officer} isOfficer={true} />
+						<MemberCard member={officer} />
 					{/each}
 				</div>
 			</section>
@@ -126,10 +133,7 @@
 
 				<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{#each allActiveMembers as member (member.guid)}
-						<MemberCard
-							{member}
-							isOfficer={'officialsRole' in member}
-						/>
+						<MemberCard {member} />
 					{/each}
 				</div>
 			</section>
@@ -151,10 +155,7 @@
 
 				<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{#each allPastMembers as member (member.guid)}
-						<MemberCard
-							{member}
-							isOfficer={'officialsRole' in member}
-						/>
+						<MemberCard {member} />
 					{/each}
 				</div>
 			</section>
