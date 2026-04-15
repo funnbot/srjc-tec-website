@@ -1,11 +1,19 @@
 import type { PageLoad } from './$types';
 
-// Replace this import with the module that holds your build-time team data.
-import { TEST_CLUB_MEMBERS, TEST_CLUB_OFFICERS } from '$lib/team-member';
+import { TEST_CLUB_MEMBERS, type ClubMember } from '$lib/team-member';
+import { arraySplitBy } from '$lib/utils';
 
 export const load: PageLoad = () => {
+	function filter(member: ClubMember): boolean {
+		return (
+			member.officer !== undefined && member.officer.roles.current.length > 0
+		);
+	}
+
+	const [currentOfficers, members] = arraySplitBy(TEST_CLUB_MEMBERS, filter);
+
 	return {
-		officers: TEST_CLUB_OFFICERS,
-		members: TEST_CLUB_MEMBERS,
+		currentOfficers,
+		members,
 	};
 };

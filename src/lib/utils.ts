@@ -26,6 +26,24 @@ export function isNonEmptyString(value: unknown): value is string {
 	return typeof value === 'string' && value.trim().length > 0;
 }
 
+export function arraySplitBy<T>(
+	array: T[],
+	predicate: (item: T) => boolean,
+): [T[], T[]] {
+	const trueItems: T[] = [];
+	const falseItems: T[] = [];
+
+	for (const item of array) {
+		if (predicate(item)) {
+			trueItems.push(item);
+		} else {
+			falseItems.push(item);
+		}
+	}
+
+	return [trueItems, falseItems];
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type WithoutChild<T> = T extends { child?: any } ? Omit<T, 'child'> : T;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

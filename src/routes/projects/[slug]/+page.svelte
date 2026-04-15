@@ -99,9 +99,9 @@
 	<meta name="description" content={project.shortDescription} />
 </svelte:head>
 
-<section class="relative isolate overflow-hidden">
+<section class="relative isolate overflow-hidden py-30">
 	<div
-		class="absolute inset-x-0 top-0 -z-10 h-[32rem] bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.18),_transparent_62%)]">
+		class="absolute inset-x-0 top-0 -z-10 h-screen bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.18),_transparent_62%)]">
 	</div>
 	<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
 		<div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">

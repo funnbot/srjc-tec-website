@@ -5,31 +5,39 @@
 	import * as Card from '$lib/components/ui/card/index.js';
 	import Linkedin from '@lucide/svelte/icons/linkedin';
 	import ArrowDown from '@lucide/svelte/icons/arrow-down';
-	import { type ClubMemberCard } from '$lib/team-member';
+	import { type ClubMember } from '$lib/team-member.js';
+	import { formatYearsActive } from './member-card';
 
 	interface MemberCardProps {
-		member: ClubMemberCard;
+		member: ClubMember;
 	}
 
 	let { member }: MemberCardProps = $props();
 
 	let expanded = $state(false);
 
+	const projects = $derived(
+		member.projects.lead.concat(member.projects.member),
+	);
+
 	const statusBadges = $derived.by(() => {
 		let status: {
 			name: string;
 			variant: BadgeVariant;
 		}[] = [];
-		if (member.officialRole !== undefined) {
-			status.push({ name: member.officialRole, variant: 'secondary' });
-		}
-		if (member.pastOfficialRoles !== undefined) {
-			for (const role of member.pastOfficialRoles) {
-				status.push({ name: role, variant: 'outline' });
-			}
-		}
-		if (!member.isCurrent) {
-			status.push({ name: 'Alumni', variant: 'ghost' });
+		if (member.officer !== undefined) {
+			status.push(
+				...member.officer.roles.current.map((role) => ({
+					name: role,
+					variant: 'secondary' as const,
+				})),
+			);
+			status.push(
+				...member.officer.roles.past.map((role) => ({
+					name: role,
+					variant: 'ghost' as const,
+				})),
+			);
 		}
 		return status;
 	});
@@ -49,7 +57,7 @@
 	<!-- Headshot -->
 	<div class="relative h-48 overflow-hidden rounded-t-3xl bg-muted/20">
 		<img
-			src={member.headShot}
+			src={member.headShot.toString()}
 			alt={member.name}
 			loading="lazy"
 			class={cn(
@@ -76,6 +84,10 @@
 			{#each statusBadges as statusBadge, i (i)}
 				<Badge variant={statusBadge.variant}>{statusBadge.name}</Badge>
 			{/each}
+			<!-- Years active -->
+			<p class="text-xs text-muted-foreground">
+				{formatYearsActive(member.yearsActive)}
+			</p>
 		</div>
 	</Card.Header>
 
@@ -84,23 +96,20 @@
 			'transition-all duration-300',
 			expanded ? 'max-h-200' : 'max-h-95',
 		)}>
-		<!-- Years active -->
-		<p class="text-xs text-muted-foreground">{member.yearsActive}</p>
-
 		<!-- Officer biography (shown when expanded) -->
-		{#if member.biography !== undefined && expanded}
+		{#if member?.officer?.biography !== undefined && expanded}
 			<div class="mt-4 animate-in duration-300 fade-in slide-in-from-top-2">
 				<p class="text-sm leading-relaxed text-foreground">
-					{member.biography}
+					{member?.officer?.biography}
 				</p>
 			</div>
 		{/if}
 
 		<!-- Social links -->
 		<div class="mt-4 flex gap-2">
-			{#if member.linkedIn}
+			{#if member.linkedin}
 				<a
-					href={member.linkedIn}
+					href={member.linkedin.toString()}
 					target="_blank"
 					rel="noreferrer"
 					aria-label="LinkedIn"
@@ -112,7 +121,7 @@
 		</div>
 
 		<!-- Projects section (revealed on expand) -->
-		{#if expanded && member.projects.length > 0}
+		{#if expanded && projects.length > 0}
 			<div
 				class="mt-6 animate-in border-t pt-4 duration-300 fade-in slide-in-from-top-2">
 				<h4
@@ -120,12 +129,12 @@
 					Projects
 				</h4>
 				<ul class="mt-3 space-y-2">
-					{#each member.projects as project (project.slug)}
+					{#each projects as project, i (i)}
 						<li
 							class="flex items-start justify-between gap-2 rounded-lg border bg-muted/30 px-3 py-2 text-sm">
 							<span class="font-medium text-foreground">{project.title}</span>
 							<Badge variant="outline" class="shrink-0">
-								{project.role}
+								{project.roles.join(', ')}
 							</Badge>
 						</li>
 					{/each}
@@ -134,7 +143,7 @@
 		{/if}
 
 		<!-- Collapse indicator -->
-		{#if member.projects.length > 0 || member.biography !== undefined}
+		{#if projects.length > 0 || member.officer !== undefined}
 			<ArrowDown
 				class={cn(
 					'mt-4 flex items-center transition-transform duration-300',
@@ -143,7 +152,3 @@
 		{/if}
 	</Card.Content>
 </Card.Root>
-
-<style lang="postcss">
-	@reference "tailwindcss";
-</style>

@@ -3,8 +3,6 @@ import type { EntryGenerator, PageLoad } from './$types';
 
 import { TEST_PROJECTS } from '$lib/project';
 
-export const prerender = true;
-
 export const entries: EntryGenerator = () => {
 	return TEST_PROJECTS.map((project) => ({
 		slug: project.slug,

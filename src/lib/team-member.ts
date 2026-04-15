@@ -19,123 +19,54 @@ const YearRangeSchema = v.object({
 
 export type YearRangeInput = v.InferInput<typeof YearRangeSchema>;
 export type ValidYearRange = v.InferOutput<typeof YearRangeSchema>;
-export interface ProjectMemberRole {
-	slug: string;
-	title: string;
-	isLead: boolean;
-	roles: string[]; // Team lead, Developer, Designer, etc.
-}
 
-export interface OfficialsRole {
-	role: string;
-	isCurrent: boolean;
-}
+const ProjectMemberRoleSchema = v.object({
+	slug: v.string(),
+	title: v.string(),
+	roles: v.array(v.string()),
+});
+
+const OfficerSchema = v.pipe(
+	v.object({
+		roles: v.object({
+			current: v.array(v.string()),
+			past: v.array(v.string()),
+		}),
+		biography: v.string(),
+	}),
+	v.check(
+		(data) => data.roles.current.length > 0 || data.roles.past.length > 0,
+		'Officer must have at least one current or past role',
+	),
+);
+
+const UrlTransformSchema = v.pipe(
+	v.string(),
+	v.url(),
+	v.transform((url) => new URL(url)),
+);
 
 const ClubMemberSchema = v.object({
-	guid: v.string(),
+	slug: v.string(),
 	name: v.string(),
-	headShot: v.pipe(
-		v.string(),
-		v.url(),
-		v.transform((url) => new URL(url)),
-	),
+	headShot: UrlTransformSchema,
 	major: v.string(),
-	linkedin: v.optional(v.string()),
+	linkedin: v.optional(UrlTransformSchema),
 	isCurrent: v.boolean(),
 	yearsActive: YearRangeSchema,
-	projects: v.array(
-		v.object({
-			slug: v.string(),
-			title: v.string(),
-			isLead: v.boolean(),
-			roles: v.array(v.string()),
-		}),
-	),
+	projects: v.object({
+		lead: v.array(ProjectMemberRoleSchema),
+		member: v.array(ProjectMemberRoleSchema),
+	}),
+	officer: v.optional(OfficerSchema),
 });
 
 export type ClubMemberInput = v.InferInput<typeof ClubMemberSchema>;
 export type ClubMember = v.InferOutput<typeof ClubMemberSchema>;
 
-const ClubOfficerSchema = v.object({
-	...ClubMemberSchema.entries,
-	officialsRoles: v.array(
-		v.object({
-			role: v.string(),
-			isCurrent: v.boolean(),
-		}),
-	),
-	biography: v.string(),
-});
-
-export type ClubOfficerInput = v.InferInput<typeof ClubOfficerSchema>;
-export type ClubOfficer = v.InferOutput<typeof ClubOfficerSchema>;
-
-function formatYearsActive(years: ValidYearRange): string {
-	const result = `'${years.start.toString().substring(2)}`;
-	if (years.end) {
-		return result + `-'${years.end.toString().substring(2)}`;
-	}
-	return result;
-}
-
-function isOfficer(member: ClubMember | ClubOfficer): member is ClubOfficer {
-	return 'officialsRoles' in member && member.officialsRoles.length > 0;
-}
-
-function transformClubMember(input: ClubMember | ClubOfficer): ClubMemberCard {
-	const card: ClubMemberCard = {
-		name: input.name,
-		headShot: input.headShot.toString(),
-		major: input.major,
-		yearsActive: formatYearsActive(input.yearsActive),
-		isCurrent: input.isCurrent,
-		projects: input.projects.map((proj) => ({
-			slug: proj.slug,
-			title: proj.title,
-			role: proj.roles.join(', '),
-		})),
-	};
-
-	if (input.linkedin !== undefined) {
-		card.linkedIn = input.linkedin;
-	}
-
-	if (isOfficer(input)) {
-		const officialRole = input.officialsRoles.find(
-			(role) => role.isCurrent,
-		)?.role;
-		card.pastOfficialRoles = input.officialsRoles
-			.filter((role) => !role.isCurrent)
-			.map((role) => role.role);
-		card.biography = input.biography;
-	}
-
-	return card;
-}
-
-export interface ClubMemberCard {
-	name: string;
-	headShot: string;
-	major: string;
-	yearsActive: string;
-	isCurrent: boolean;
-
-	projects: {
-		slug: string;
-		title: string;
-		role: string;
-	}[];
-
-	linkedIn?: string;
-
-	officialRole?: string;
-	pastOfficialRoles?: string[];
-	biography?: string;
-}
-
 export const TEST_CLUB_MEMBERS: ClubMember[] = [
 	{
-		guid: 'member-ava-patel',
+		slug: 'member-ava-patel',
 		name: 'Ava Patel',
 		headShot: placeholderImage('Ava Patel', [400, 400]),
 		major: 'Computer Engineering',
@@ -147,17 +78,27 @@ export const TEST_CLUB_MEMBERS: ClubMember[] = [
 			start: 2025,
 		},
 		isCurrent: true,
-		projects: [
-			{
-				slug: 'project-one',
-				title: 'Project One',
-				isLead: false,
-				roles: ['Firmware Developer'],
+		projects: {
+			lead: [],
+			member: [
+				{
+					slug: 'project-one',
+					title: 'Project One',
+					roles: ['Firmware Developer'],
+				},
+			],
+		},
+		officer: {
+			roles: {
+				current: ['Vice President'],
+				past: ['Secretary'],
 			},
-		],
+			biography:
+				'Ava is a senior studying Computer Engineering. She has a passion for embedded systems and has been an active member of the club for three years.',
+		},
 	},
 	{
-		guid: 'member-noah-kim',
+		slug: 'member-noah-kim',
 		name: 'Noah Kim',
 		headShot: placeholderImage('Noah Kim', [400, 400]),
 		major: 'Civil Engineering',
@@ -169,84 +110,15 @@ export const TEST_CLUB_MEMBERS: ClubMember[] = [
 			end: 2024,
 		},
 		isCurrent: false,
-		projects: [
-			{
-				slug: 'project-four',
-				title: 'Project Four',
-				isLead: false,
-				roles: ['Structures Analyst', 'CAD Designer'],
-			},
-		],
+		projects: {
+			lead: [],
+			member: [
+				{
+					slug: 'project-four',
+					title: 'Project Four',
+					roles: ['Structures Analyst', 'CAD Designer'],
+				},
+			],
+		},
 	},
 ].map((o) => v.parse(ClubMemberSchema, o));
-
-export const TEST_CLUB_OFFICERS: ClubOfficer[] = [
-	{
-		guid: 'member-maya-chen',
-		name: 'Maya Chen',
-		headShot: placeholderImage('Maya Chen', [400, 400]),
-		major: 'Mechanical Engineering',
-		links: {
-			linkedin: 'https://www.linkedin.com/in/mayachen',
-			github: 'https://github.com/mayachen',
-		},
-		yearsActive: {
-			start: 2024,
-			end: 2026,
-		},
-		isCurrent: true,
-		projects: [
-			{
-				slug: 'project-one',
-				title: 'Project One',
-				isLead: true,
-				roles: ['Systems Lead'],
-			},
-			{
-				slug: 'project-three',
-				title: 'Project Three',
-				isLead: false,
-				roles: ['CAD Designer'],
-			},
-		],
-		officialsRoles: [
-			{
-				role: 'President',
-				isCurrent: true,
-			},
-		],
-		biography:
-			'Maya focuses on project planning and mentoring new members in prototyping and design reviews.',
-	},
-	{
-		guid: 'member-leo-martinez',
-		name: 'Leo Martinez',
-		headShot: placeholderImage('Leo Martinez', [400, 400]),
-		major: 'Electrical Engineering',
-		links: {
-			linkedin: 'https://www.linkedin.com/in/leomartinez',
-			github: 'https://github.com/leomartinez',
-		},
-		yearsActive: {
-			start: 2023,
-			end: 2025,
-		},
-		isCurrent: false,
-		projects: [
-			{
-				slug: 'project-two',
-				title: 'Project Two',
-				isLead: false,
-				roles: ['PCB Engineer'],
-			},
-		],
-		officialsRoles: [
-			{
-				role: 'Treasurer',
-				isCurrent: false,
-			},
-		],
-		biography:
-			'Leo managed budgeting for prototypes and helped standardize sourcing and component tracking.',
-	},
-].map((o) => v.parse(ClubOfficerSchema, o));

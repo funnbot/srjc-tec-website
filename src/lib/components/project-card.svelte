@@ -16,7 +16,7 @@
 	class="group h-full overflow-hidden border transition-colors hover:border-primary/40">
 	<img
 		src={project.coverImage}
-		alt={project.imageAlt ?? project.title}
+		alt={project.title}
 		loading="lazy"
 		class="h-44 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
 

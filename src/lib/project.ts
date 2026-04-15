@@ -1,4 +1,3 @@
-import type { ClubMember, ClubOfficer } from '$lib/team-member';
 import { placeholderImage } from '$lib/utils';
 
 export interface Contributor {
@@ -23,18 +22,11 @@ export interface ProjectData {
 	contributors: Contributor[];
 }
 
-export interface ProjectData {
-	guid: string;
-	title: string;
-	shortDescription: string;
-}
-
 export interface ProjectCardData {
 	slug: string;
 	title: string;
 	description: string;
 	coverImage: string;
-	imageAlt: string;
 	status: string;
 }
 
@@ -44,7 +36,6 @@ export const TEST_PROJECTS: ProjectCardData[] = [
 		title: 'Project One',
 		description: 'This is a description of project one.',
 		coverImage: placeholderImage('Project One'),
-		imageAlt: 'Project One Cover Image',
 		status: 'In Progress',
 	},
 	{
@@ -52,7 +43,6 @@ export const TEST_PROJECTS: ProjectCardData[] = [
 		title: 'Project Two',
 		description: 'This is a description of project two.',
 		coverImage: placeholderImage('Project Two'),
-		imageAlt: 'Project Two Cover Image',
 		status: 'Completed',
 	},
 	{
@@ -60,7 +50,6 @@ export const TEST_PROJECTS: ProjectCardData[] = [
 		title: 'Project Three',
 		description: 'This is a description of project three.',
 		coverImage: placeholderImage('Project Three'),
-		imageAlt: 'Project Three Cover Image',
 		status: 'Planned',
 	},
 	{
@@ -68,7 +57,6 @@ export const TEST_PROJECTS: ProjectCardData[] = [
 		title: 'Project Four',
 		description: 'This is a description of project four.',
 		coverImage: placeholderImage('Project Four'),
-		imageAlt: 'Project Four Cover Image',
 		status: 'Not Started',
 	},
 ];

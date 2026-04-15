@@ -6,7 +6,7 @@
 	const components: { title: string; href: Pathname }[] = [
 		{ title: 'About', href: '/' },
 		{ title: 'Events', href: '/' },
-		{ title: 'Team', href: '/' },
+		{ title: 'Team', href: '/team' },
 		{ title: 'Sponsors', href: '/' },
 		{ title: 'Projects', href: '/projects' },
 	];
