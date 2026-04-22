@@ -3,6 +3,7 @@
 	import type { ResolvedPathname } from '$app/types';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
+	import { md } from '$lib/markdown';
 	import { cn } from '$lib/utils.js';
 
 	interface Member {
@@ -86,6 +87,10 @@
 					formattedDate: dateFormatter.format(new Date(entry.date)),
 					open: index === 0 || entry.openByDefault,
 				};
+			})
+			.map((entry) => {
+				entry.bodyHtml = md.render(entry.bodyHtml);
+				return entry;
 			});
 	});
 
@@ -122,7 +127,7 @@
 							<div class="space-y-3">
 								{#each leads as member (member.slug)}
 									<a
-										href={teamHref(member)}
+										href={resolve(`/team#${member.slug}`)}
 										class="group block rounded-2xl border border-border/70 bg-card/80 p-3 transition hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent/10">
 										<div class="flex items-start justify-between gap-3">
 											<div class="min-w-0">
@@ -158,7 +163,7 @@
 							<div class="space-y-3">
 								{#each contributors as member (member.slug)}
 									<a
-										href={teamHref(member)}
+										href={resolve(`/team#${member.slug}`)}
 										class="group block rounded-2xl border border-border/70 bg-card/80 p-3 transition hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent/10">
 										<div class="flex items-start justify-between gap-3">
 											<div class="min-w-0">
@@ -324,6 +329,7 @@
 													<li>
 														<a
 															href={file.href}
+															rel="external"
 															download
 															class="flex items-center justify-between gap-4 rounded-xl border bg-background px-4 py-3 text-sm transition hover:border-primary/40 hover:bg-accent/10">
 															<span class="min-w-0">
