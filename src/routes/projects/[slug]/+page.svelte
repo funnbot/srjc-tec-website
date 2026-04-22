@@ -3,6 +3,7 @@
 	import type { PageProps } from './$types';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
+	import { md } from '$lib/markdown';
 	import { cn } from '$lib/utils.js';
 
 	let { data }: PageProps = $props();
@@ -27,6 +28,10 @@
 					formattedDate: dateFormatter.format(new Date(entry.date)),
 					open: index === 0 || entry.openByDefault,
 				};
+			})
+			.map((entry) => {
+				entry.bodyHtml = md.render(entry.bodyHtml);
+				return entry;
 			});
 	});
 </script>
@@ -261,6 +266,7 @@
 													<li>
 														<a
 															href={file.href}
+															rel="external"
 															download
 															class="flex items-center justify-between gap-4 rounded-xl border bg-background px-4 py-3 text-sm transition hover:border-primary/40 hover:bg-accent/10">
 															<span class="min-w-0">
