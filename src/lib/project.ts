@@ -4,17 +4,14 @@ import * as v from 'valibot';
 const ProjectMemberSchema = v.object({
 	slug: v.string(),
 	name: v.string(),
-	role: v.string(),
-	href: v.optional(v.string()),
+	role: v.string()
 });
 
-export type ProjectMemberInput = v.InferInput<typeof ProjectMemberSchema>;
 export type ProjectMember = v.InferOutput<typeof ProjectMemberSchema>;
 
 const DevlogImageMediaSchema = v.object({
 	type: v.literal('image'),
 	src: v.string(),
-	alt: v.string(),
 	caption: v.optional(v.string()),
 });
 

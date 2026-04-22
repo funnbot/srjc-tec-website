@@ -5,12 +5,14 @@
 	import { Separator } from '$lib/components/ui/separator/index.js';
 	import { md } from '$lib/markdown';
 	import { cn } from '$lib/utils.js';
+	import ArrowDown from '@lucide/svelte/icons/arrow-down';
 
 	let { data }: PageProps = $props();
 
-	const project = $derived(data.project);
-	const leads = $derived(project.leads ?? []);
-	const contributors = $derived(project.contributors ?? []);
+	// svelte-ignore state_referenced_locally
+	const project = data.project;
+	const leads = project.leads ?? [];
+	const contributors = project.contributors ?? [];
 	const dateFormatter = new Intl.DateTimeFormat('en-US', {
 		month: 'long',
 		day: 'numeric',
@@ -164,10 +166,6 @@
 						<h2 class="font-display text-2xl font-semibold">
 							Development logs
 						</h2>
-						<p class="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground">
-							Newest updates are expanded by default. Older entries stay
-							collapsed until opened.
-						</p>
 					</div>
 
 					<div class="space-y-4">
@@ -184,16 +182,11 @@
 											</h3>
 											<Badge variant="outline">{log.formattedDate}</Badge>
 										</div>
-										{#if log.title && log.title !== log.formattedDate}
-											<p class="mt-1 text-sm text-muted-foreground">
-												{log.formattedDate}
-											</p>
-										{/if}
 									</div>
 
 									<span
 										class="devlog-caret text-sm text-muted-foreground transition-transform duration-200">
-										⌄
+										<ArrowDown />
 									</span>
 								</summary>
 
@@ -206,7 +199,7 @@
 														class="overflow-hidden rounded-2xl border bg-muted/20">
 														<img
 															src={item.src}
-															alt={item.alt}
+															alt={item.caption}
 															loading="lazy"
 															class="h-full w-full object-cover" />
 														{#if item.caption}
@@ -252,7 +245,7 @@
 										class={cn(
 											'prose prose-slate dark:prose-invert mt-6 max-w-none',
 										)}>
-										{log.bodyHtml}
+										{@html log.bodyHtml}
 									</div>
 
 									{#if log.files?.length}

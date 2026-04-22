@@ -2,7 +2,6 @@
 	import * as Card from '$lib/components/ui/card/index.js';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import type { ProjectCardData } from '$lib/project';
-	import { isNonEmptyString } from '$lib/utils';
 	import { resolve } from '$app/paths';
 
 	interface Props {
