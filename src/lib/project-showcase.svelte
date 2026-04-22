@@ -13,7 +13,7 @@
 	<h1 class="text-5xl font-semibold">Projects</h1>
 	<div
 		class="
-    flex flex-col items-start justify-start gap-6 self-stretch
+    flex flex-col items-start justify-center gap-6
     md:flex-row
   ">
 		<ProjectCard project={TEST_PROJECT_CARDS[0]}></ProjectCard>
