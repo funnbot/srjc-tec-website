@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import Button from './Button.svelte';
-	import { TEST_PROJECTS } from './project';
+	import { TEST_PROJECT_CARDS } from './project';
 	import ProjectCard from './components/project-card.svelte';
 </script>
 
@@ -16,9 +16,9 @@
     flex flex-col items-start justify-start gap-6 self-stretch
     md:flex-row
   ">
-		<ProjectCard project={TEST_PROJECTS[0]}></ProjectCard>
-		<ProjectCard project={TEST_PROJECTS[1]}></ProjectCard>
-		<ProjectCard project={TEST_PROJECTS[2]}></ProjectCard>
+		<ProjectCard project={TEST_PROJECT_CARDS[0]}></ProjectCard>
+		<ProjectCard project={TEST_PROJECT_CARDS[1]}></ProjectCard>
+		<ProjectCard project={TEST_PROJECT_CARDS[2]}></ProjectCard>
 	</div>
 	<hr class="h-0.5 w-full fill-slate-800" />
 	<Button href={resolve('/')}>See More</Button>

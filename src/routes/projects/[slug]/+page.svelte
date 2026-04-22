@@ -1,70 +1,11 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import type { ResolvedPathname } from '$app/types';
+	import type { PageProps } from './$types';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
 	import { cn } from '$lib/utils.js';
 
-	interface Member {
-		slug: string;
-		name: string;
-		role: string;
-		href?: string;
-	}
-
-	type DevlogMedia =
-		| {
-				type: 'image';
-				src: string;
-				alt: string;
-				caption?: string;
-		  }
-		| {
-				type: 'video';
-				src: string;
-				title?: string;
-				poster?: string;
-				embed?: boolean;
-				caption?: string;
-		  };
-
-	interface DevlogFile {
-		label: string;
-		href: string;
-		description?: string;
-	}
-
-	interface DevlogEntry {
-		id: string;
-		title?: string;
-		date: string;
-		bodyHtml: string;
-		media?: DevlogMedia[];
-		files?: DevlogFile[];
-		openByDefault?: boolean;
-	}
-
-	interface Project {
-		guid: string;
-		slug: string;
-		title: string;
-		shortDescription: string;
-		detailedDescription: string;
-		coverImage: string;
-		coverImageAlt: string;
-		status: string;
-		leads?: Member[];
-		contributors?: Member[];
-		devlogs: DevlogEntry[];
-	}
-
-	interface Props {
-		data: {
-			project: Project;
-		};
-	}
-
-	let { data }: Props = $props();
+	let { data }: PageProps = $props();
 
 	const project = $derived(data.project);
 	const leads = $derived(project.leads ?? []);
@@ -88,10 +29,6 @@
 				};
 			});
 	});
-
-	function teamHref(member: Member): ResolvedPathname {
-		return resolve(`/team#${member.slug}`);
-	}
 </script>
 
 <svelte:head>
@@ -101,7 +38,7 @@
 
 <section class="relative isolate overflow-hidden py-30">
 	<div
-		class="absolute inset-x-0 top-0 -z-10 h-screen bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.18),_transparent_62%)]">
+		class="absolute inset-x-0 top-0 -z-10 h-screen bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_62%)]">
 	</div>
 	<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
 		<div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
@@ -122,7 +59,7 @@
 							<div class="space-y-3">
 								{#each leads as member (member.slug)}
 									<a
-										href={teamHref(member)}
+										href={resolve(`/team#${member.slug}`)}
 										class="group block rounded-2xl border border-border/70 bg-card/80 p-3 transition hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent/10">
 										<div class="flex items-start justify-between gap-3">
 											<div class="min-w-0">
@@ -158,7 +95,7 @@
 							<div class="space-y-3">
 								{#each contributors as member (member.slug)}
 									<a
-										href={teamHref(member)}
+										href={resolve(`/team#${member.slug}`)}
 										class="group block rounded-2xl border border-border/70 bg-card/80 p-3 transition hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent/10">
 										<div class="flex items-start justify-between gap-3">
 											<div class="min-w-0">
@@ -207,10 +144,10 @@
 							</p>
 						</div>
 
-						<div class="relative min-h-[18rem] bg-muted/30">
+						<div class="relative min-h-72 bg-muted/30">
 							<img
 								src={project.coverImage}
-								alt={project.coverImageAlt || project.title}
+								alt={project.coverImageAlt ?? project.title}
 								loading="eager"
 								class="h-full w-full object-cover" />
 						</div>
@@ -280,7 +217,7 @@
 														{#if item.embed}
 															<iframe
 																src={item.src}
-																title={item.title || log.title || project.title}
+																title={item.title ?? log.title ?? project.title}
 																loading="lazy"
 																allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 																allowfullscreen

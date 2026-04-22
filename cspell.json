@@ -11,6 +11,9 @@
 		"srjc",
 		"Stylesheet",
 		"sveltex",
-		"unenc"
+		"unenc",
+		"supabase",
+		"devlog",
+		"devlogs",
 	]
 }

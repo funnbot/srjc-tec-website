@@ -6,10 +6,9 @@
 	import * as Button from '$lib/components/ui/button/index.js';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
-	import { SvelteSet } from 'svelte/reactivity';
-	import { TEST_PROJECTS, type ProjectCardData } from '$lib/project';
+	import { TEST_PROJECT_CARDS, type ProjectCardData } from '$lib/project';
 
-	const projects: ProjectCardData[] = TEST_PROJECTS;
+	const projects: ProjectCardData[] = TEST_PROJECT_CARDS;
 </script>
 
 <section class="relative container mx-auto px-4 pt-30">
