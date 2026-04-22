@@ -4,7 +4,7 @@
 	import type { LayoutProps } from './$types';
 	import { ModeWatcher } from 'mode-watcher';
 	import Header from '$lib/header.svelte';
-	import Footer from '$lib/Footer.svelte';
+	import Footer from '$lib/footer.svelte';
 	let { children }: LayoutProps = $props();
 </script>
 

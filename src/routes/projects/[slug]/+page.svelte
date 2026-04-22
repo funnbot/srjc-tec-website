@@ -252,7 +252,7 @@
 										class={cn(
 											'prose prose-slate dark:prose-invert mt-6 max-w-none',
 										)}>
-										{@html log.bodyHtml}
+										{log.bodyHtml}
 									</div>
 
 									{#if log.files?.length}

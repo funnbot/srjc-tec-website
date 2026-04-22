@@ -1,45 +1,26 @@
 <div
-	class="
-   flex flex-row gap-8 bg-footer-surface px-8 py-8
-   sm:flex-col sm:px-16 sm:py-16
-   lg:px-24 lg:py-24
- ">
-	<div
-		class="
-    flex flex-1 items-center gap-4
-    md:gap-12
-  ">
-		<a class="text-brand" href="#">
-			<span class="sr-only">Home</span>
-			Logo
-			<span class="text-lg font-semibold text-header-content">TEC</span>
-		</a>
-	</div>
-	<div
-		class="
-    inline-flex flex-col items-start justify-between self-stretch
-    sm:flex-row
-  ">
-		<a href="#" class="text-sm leading-5 font-normal text-footer-content">
-			Copyright 2025 The Engineering Club.
-		</a>
-		<div
-			class="
-     flex flex-col items-start justify-start gap-8
-     sm:flex-row
-   ">
-			<a href="#" class="text-sm leading-5 font-normal text-footer-content">
-				Privacy Policy
-			</a>
-			<a href="#" class="text-sm leading-5 font-normal text-footer-content">
-				Terms & Conditions
-			</a>
-			<a href="#" class="text-sm leading-5 font-normal text-footer-content">
-				Cookie Policy
-			</a>
-			<a href="#" class="text-sm leading-5 font-normal text-footer-content">
-				Contact
-			</a>
+	class="flex h-fit w-full flex-col bg-background py-14 text-[#e5e7eb] lg:px-40">
+	<div class="flex flex-row">
+		<div class="flex w-[35%] flex-col justify-center gap-2">
+			<div class="flex w-full items-center gap-4">
+				Logo
+				<!---->
+				<div class="font-display text-5xl">Engineering Club</div>
+				<!---->
+			</div>
+			<div class="mx-auto grid grid-cols-3 gap-6 p-4">
+				<a href="#">Social Links</a>
+			</div>
+			<!---->
+		</div>
+		<div class="flex w-[65%] flex-row justify-end gap-16 text-nowrap">
+			<div class="grid grid-cols-1 gap-28">
+				<div class="flex flex-col gap-2">
+					<div class="pb-3 font-bold text-[#9ca3af] uppercase">Info</div>
+					<a href="#xxx" class="hover:underline">Meeting Times</a>
+					<a href="#xxx" class="hover:underline">Email</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
